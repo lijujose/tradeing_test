@@ -1,1 +1,2 @@
-# tradeing_test
+# To run test cases
+``` npm test ```
