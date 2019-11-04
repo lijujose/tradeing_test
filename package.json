@@ -1,0 +1,23 @@
+{
+  "name": "tradeing_test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lijujose/tradeing_test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lijujose/tradeing_test/issues"
+  },
+  "homepage": "https://github.com/lijujose/tradeing_test#readme",
+  "devDependencies": {
+    "mocha": "^6.2.2"
+  }
+}
