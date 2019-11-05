@@ -15,6 +15,6 @@ jobs:
         with:
           node-version: '10.15.3'
       - name: Unit test check
-      - run: |
+        run: |
           npm ci
           npm test
