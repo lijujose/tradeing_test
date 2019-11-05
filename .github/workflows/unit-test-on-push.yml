@@ -15,8 +15,8 @@ jobs:
         with:
           node-version: '10.15.3'
       - name: Install dependencies
-        run: npm ci
-      - name: TypeScript Compile
+        run: npm i
+      - name: TypeScript compile
         run: npm run compile
-      - name: Unit test check
+      - name: Run unit test
         run: npm test
