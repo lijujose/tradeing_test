@@ -1,2 +1,2 @@
 # To run test cases
-``` npm test ```
+``` npm run compile && npm test ```
