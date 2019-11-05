@@ -1,0 +1,19 @@
+name: Run unit test
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  unit-test:
+    name: Run unit test
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.15.3'
+      - run: |
+          npm ci
+          npm test
