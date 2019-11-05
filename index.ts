@@ -1,7 +1,7 @@
-const figure = []
-let iStart = 0, jStart = 0;
+const figure: Array<Array<number>> = []
+let iStart:number = 0, jStart:number = 0;
 
-const draw = function (width, height, padding) {
+export const draw = function (width: number, height: number, padding: number) {
   // padding has to divisble of 2
   if (padding % 2 !== 0) throw Error("Not a valid padding");
 
@@ -25,11 +25,6 @@ const draw = function (width, height, padding) {
   return draw(width - (padding/2), height - (padding/2), padding);
 }
 
-const unset = function() {
+export const unset = function() {
   iStart = 0; jStart = 0;
 }
-
-module.exports = {
-  draw,
-  unset,
-};
