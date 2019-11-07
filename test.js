@@ -42,11 +42,6 @@ describe("Test draw function", () => {
     }
   });
 
-  it("should create shapes: width=20, height=20, padding=4", () => {
-    const shape = _module.draw(60,60,10);
-    _module.print2DShape();
-  });
-
   it("test with 'test_data.json' file", () => {
     for(let data of testData) {
       _module.unset();

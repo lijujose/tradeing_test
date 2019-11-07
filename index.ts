@@ -48,10 +48,6 @@ export function unset() {
  */
 export function print2DShape() {
   for(let arr of shape) {
-    let line: string = "";
-    for(let val of arr) {
-      line += `${val} `;
-    }
-    console.log(line);
+    console.log(JSON.stringify(arr));
   }
 }
