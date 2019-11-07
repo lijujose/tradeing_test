@@ -48,6 +48,10 @@ export function unset() {
  */
 export function print2DShape() {
   for(let arr of shape) {
-    console.log(JSON.stringify(arr));
+    let arrStr = arr.join(" ");
+    arrStr = arrStr.replace(/1/g, "-");
+    arrStr = arrStr.replace(/2/g, "|");
+    arrStr = arrStr.replace(/0/g, " ");
+    console.log(arrStr);
   }
 }
