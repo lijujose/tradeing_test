@@ -21,4 +21,4 @@
 
 ## Other open source projects, I have contributed.
 
-- Nightfall[Github page](https://github.com/EYBlockchain/nightfall)
+- [Nightfall](https://github.com/EYBlockchain/nightfall)
