@@ -6,7 +6,7 @@
 
 ### Time complexity
 
-*If we consider 'n' to be no. of elements in two dimensional then code has O(n) complexity*
+*If we consider 'n' to be no. of elements in two dimensional array then code has O(n) complexity*
 
 ## ScreenShots
 
