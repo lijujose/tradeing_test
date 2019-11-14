@@ -1,0 +1,14 @@
+name: check github events
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  echo-pr-event:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Print PR event
+      run: echo github.event
