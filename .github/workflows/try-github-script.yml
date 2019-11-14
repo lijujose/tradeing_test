@@ -1,7 +1,7 @@
 name: try github scripts
 
 on:
-  pull_request:
+  push:
     branches:
       - master
 
@@ -14,5 +14,4 @@ jobs:
           github-token: ${{github.token}}
           script: |
             const diff_url = context.payload.pull_request.diff_url
-            const result = await github.request(diff_url)
-            console.log(result)
+            console.log(github.token)
