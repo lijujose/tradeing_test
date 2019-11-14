@@ -13,5 +13,5 @@ jobs:
         with:
           github-token: ${{github.token}}
           script: |
-            const diff_url = context.payload.pull_request.diff_url
-            console.log(github.token)
+            console.log(context)
+            console.log(github)
