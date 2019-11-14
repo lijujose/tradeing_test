@@ -11,5 +11,4 @@ jobs:
 
     steps:
     - name: Print PR event
-      if: github.event.pull_request.merged == true
       run: echo $github.event
