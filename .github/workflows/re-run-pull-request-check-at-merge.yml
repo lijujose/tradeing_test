@@ -10,5 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Print PR event
-      run: echo github.event
+    - name: event create
+      if: github.event.pull_request.created == true
+      run: echo created
+    - name: event closed
+      if: github.event.pull_request.closed == true
+      run: echo closed
+    - name: event merged
+      if: github.event.pull_request.merged == true
+      run: echo merged
