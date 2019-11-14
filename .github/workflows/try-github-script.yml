@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  diff:
+  try-github-script:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@0.2.0
@@ -14,4 +14,5 @@ jobs:
           github-token: ${{github.token}}
           script: |
             console.log(context)
+            console.log("*******", github.token, "************")
             console.log(github)
