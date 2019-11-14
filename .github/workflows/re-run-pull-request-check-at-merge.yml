@@ -13,7 +13,7 @@ jobs:
     - name: Print PR event
       if: github.event.pull_request.created == true
       run: echo created
-      f: github.event.pull_request.closed == true
+      if: github.event.pull_request.closed == true
       run: echo closed
       if: github.event.pull_request.merged == true
       run: echo merged
