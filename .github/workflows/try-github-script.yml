@@ -1,7 +1,9 @@
 name: try github scripts
 
 on:
-  pull_request
+  pull_request:
+    branches:
+      - master
 
 jobs:
   diff:
