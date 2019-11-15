@@ -16,3 +16,10 @@ jobs:
             console.log(context)
             console.log("*******", github.token, "************")
             console.log(Object.keys(github.pullRequests))
+            const owner = context.payload.sender.login;
+            const repo = context.payload.repository.name;
+            const { data: pullRequest } = await github.pulls.get({
+              owner,
+              repo,
+            });
+            console.log(pullRequest);
