@@ -22,5 +22,6 @@ jobs:
               owner,
               repo,
               pull_number: 6,
+              base: "temp2"
             });
-            console.log(status, owner);
+            console.log(status);
