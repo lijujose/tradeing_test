@@ -15,4 +15,4 @@ jobs:
           script: |
             console.log(context)
             console.log("*******", github.token, "************")
-            console.log(Object.keys(github))
+            console.log(Object.keys(github.pullRequests))
