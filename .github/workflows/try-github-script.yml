@@ -18,7 +18,7 @@ jobs:
             console.log(Object.keys(github.pullRequests))
             const owner = context.payload.sender.login;
             const repo = context.payload.repository.name;
-            const status = await github.pulls.get({
+            const status = await github.pulls.get.endpoint({
               owner,
               repo,
               pull_number: 6,
