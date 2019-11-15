@@ -22,6 +22,8 @@ jobs:
               state: "open"
             });
 
+            console.log(pullRequests);
+
             github.registerEndpoints({
               pr: {
                 commits: {
