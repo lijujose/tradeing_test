@@ -13,9 +13,6 @@ jobs:
         with:
           github-token: ${{github.token}}
           script: |
-            console.log(context)
-            console.log("*******", github.token, "************")
-            console.log(Object.keys(github.pullRequests))
             const owner = context.payload.sender.login;
             const repo = context.payload.repository.name;
             const {data: pullRequests} = await github.pulls.list({
@@ -25,3 +22,11 @@ jobs:
               state: "open"
             });
             console.log(pullRequests);
+            for (let pr of pullRequests) {
+              const {data: commits} = await github.pulls.listCommits({
+                owner,
+                repo,
+                pull_number: pr.number
+              });
+              console.log(commits, pr.number);
+            }
