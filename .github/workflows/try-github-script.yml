@@ -48,12 +48,12 @@ jobs:
               }
             });
 
-            for (pr in pullRequests) {
+            for (pr of pullRequests) {
               const {data: commits} = await github.pr.commits({
                 owner,
                 repo,
-                branch: pullRequests[0].head.ref
+                branch: pr.head.ref
               });
-              console.log(commits[0], pullRequests[0].number);
+              console.log(commits[0], pr.number);
             }
             
