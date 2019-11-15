@@ -11,7 +11,6 @@ jobs:
     steps:
       - uses: actions/github-script@0.2.0
         with:
-          github-token: ${{github.token}}
           script: |
             console.log(context)
             console.log("*******", github.token, "************")
