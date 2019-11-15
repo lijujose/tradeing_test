@@ -18,11 +18,10 @@ jobs:
             console.log(Object.keys(github.pullRequests))
             const owner = context.payload.sender.login;
             const repo = context.payload.repository.name;
-            const status = await github.pulls.list({
+            const {data: pullRequests} = await github.pulls.list({
               owner,
               repo,
-              pull_number: 6,
               base: "master",
               state: "open"
             });
-            console.log(status);
+            console.log(pullRequests);
