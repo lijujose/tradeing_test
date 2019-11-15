@@ -21,7 +21,6 @@ jobs:
               base: "master",
               state: "open"
             });
-            console.log(pullRequests);
 
             github.registerEndpoints({
               pr: {
@@ -49,7 +48,7 @@ jobs:
               }
             });
 
-            const {data: commits} = await github.pr.commits({
+            const commits = await github.pr.commits({
               owner,
               repo,
               sha: pullRequests[0].head.ref
