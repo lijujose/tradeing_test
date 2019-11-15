@@ -54,6 +54,6 @@ jobs:
                 repo,
                 branch: pr.head.ref
               });
-              console.log(commits[0], pr.number);
+              console.log(commits, pr.number);
             }
             
