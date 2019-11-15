@@ -49,11 +49,9 @@ jobs:
               }
             });
 
-            for (let pr of pullRequests) {
-              const {data: commits} = await github.pr.commits({
-                owner,
-                repo,
-                sha: pr.head.ref
-              });
-              console.log(commits, pr.number);
-            }
+            const {data: commits} = await github.pr.commits({
+              owner,
+              repo,
+              sha: pullRequests[0].head.ref
+            });
+            console.log(commits, pullRequests[0].number);
