@@ -22,11 +22,38 @@ jobs:
               state: "open"
             });
             console.log(pullRequests);
+
+            github.registerEndpoints({
+              pr: {
+                commits: {
+                  method: "GET",
+                  url: "/repos/:owner/:repo/commits",
+                  headers: {
+                    accept: "application/vnd.github.foo-bar-preview+json"
+                  },
+                  params: {
+                    owner: {
+                      required: true,
+                      type: "string"
+                    },
+                    repo: {
+                      required: true,
+                      type: "string"
+                    },
+                    sha: {
+                      required: true,
+                      type: "string"
+                    }
+                  }
+                }
+              }
+            });
+
             for (let pr of pullRequests) {
-              const {data: commits} = await github.pulls.listCommits({
+              const {data: commits} = await github.pr.commits({
                 owner,
                 repo,
-                pull_number: pr.number
+                sha: pr.head.ref
               });
               console.log(commits, pr.number);
             }
