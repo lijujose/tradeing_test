@@ -22,4 +22,4 @@ jobs:
               owner,
               repo,
             });
-            console.log(status);
+            console.log(status, owner);
