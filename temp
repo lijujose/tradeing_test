@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-
 declare -i limit=255
 
 for((i=14; i<$limit; i++))
