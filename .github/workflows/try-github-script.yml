@@ -16,6 +16,16 @@ jobs:
             console.log(context);
             const owner = context.payload.sender.login;
             const repo = context.payload.repository.name;
+            const commitHash = context.payload.after;
+
+            const commitRec = await github.git.getCommit({
+              owner,
+              repo,
+              commit_sha: commitHash
+            });
+
+            console.log(commitRec);
+
             const {data: pullRequests} = await github.pulls.list({
               owner,
               repo,
