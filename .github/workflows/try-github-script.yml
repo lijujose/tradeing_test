@@ -13,6 +13,7 @@ jobs:
         with:
           github-token: ${{github.token}}
           script: |
+            console.log(context);
             const owner = context.payload.sender.login;
             const repo = context.payload.repository.name;
             const {data: pullRequests} = await github.pulls.list({
@@ -51,12 +52,6 @@ jobs:
             });
 
             for (pr of pullRequests) {
-              const re = await github.pulls.get({
-                owner,
-                repo,
-                pull_number: pr.number
-              });
-              console.log(re);
               const {data: commit} = await github.pr.commits({
                 owner,
                 repo,
