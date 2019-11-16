@@ -13,7 +13,6 @@ jobs:
         with:
           github-token: ${{github.token}}
           script: |
-            console.log(context);
             const owner = context.payload.sender.login;
             const repo = context.payload.repository.name;
             const commitHash = context.payload.after;

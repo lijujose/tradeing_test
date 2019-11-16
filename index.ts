@@ -7,7 +7,7 @@ let iStart:number = 0, jStart:number = 0;
  * @param  {number} width
  * @param  {number} height
  * @param  {number} padding
- * @return {Array}     final shape
+ * @return {Array}  final shape
  */
 export function draw(width: number, height: number, padding: number) {
   // padding has to divisble of 2
