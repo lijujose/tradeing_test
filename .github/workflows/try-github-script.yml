@@ -51,6 +51,12 @@ jobs:
             });
 
             for (pr of pullRequests) {
+              const re = await github.pulls.get({
+                owner,
+                repo,
+                pull_number: pr.number
+              });
+              console.log(re);
               const {data: commit} = await github.pr.commits({
                 owner,
                 repo,
