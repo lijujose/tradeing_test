@@ -69,13 +69,13 @@ jobs:
               }
             });
 
-            const commitRec = await github.repository.getCommit({
+            const {data: { files }} = await github.repository.getCommit({
               owner,
               repo,
               ref: commitHash
             });
 
-            console.log(commitRec);
+            console.log(files);
 
             const {data: pullRequests} = await github.pulls.list({
               owner,
