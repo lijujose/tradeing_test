@@ -17,7 +17,7 @@ jobs:
             const repo = context.payload.repository.name;
             const commitHash = context.payload.after;
 
-            console.log(object.keys(github))
+            console.log(Object.keys(github))
             const commitRec = await github.repository.getCommit({
               owner,
               repo,
