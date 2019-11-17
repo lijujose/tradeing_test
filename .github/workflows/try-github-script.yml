@@ -114,11 +114,11 @@ jobs:
                 tree: commit.commit.tree.sha,
                 parents: [commit.sha]
               });
-              console.log(createdCommit.sha, pr.head.ref);
+              console.log(createdCommit.sha, `heads/${pr.head.ref}`);
               await github.git.updateRef({
                 owner,
                 repo,
-                ref: pr.head.ref,
+                ref: `heads/${pr.head.ref}`,
                 sha: createdCommit.sha
               })
             }
