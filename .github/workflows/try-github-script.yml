@@ -118,7 +118,7 @@ jobs:
               await github.git.updateRef({
                 owner,
                 repo,
-                ref: commit.sha,
+                ref: pr.head.ref,
                 sha: createdCommit.sha
               })
             }
