@@ -14,6 +14,7 @@ jobs:
           github-token: ${{github.token}}
           script: |
             const owner = context.payload.sender.login;
+            console.log(context.payload)
             const repo = context.payload.repository.name;
             const commitHash = context.payload.after;
             let runGithubActions = false;
@@ -125,8 +126,7 @@ jobs:
                 repo,
                 message: "tigger github actions",
                 tree: commit.commit.tree.sha,
-                parents: [commit.sha],
-                author: context.payload.sender
+                parents: [commit.sha]
               });
   
               await github.git.updateRef({
