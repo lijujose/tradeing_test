@@ -111,7 +111,7 @@ jobs:
                 owner,
                 repo,
                 message: "tigger github actions",
-                tree: commit.tree.sha,
+                tree: commit.commit.tree.sha,
                 parents: [commit.sha]
               });
               console.log(createdCommit);
