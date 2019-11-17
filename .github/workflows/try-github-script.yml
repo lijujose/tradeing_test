@@ -107,7 +107,7 @@ jobs:
                 branch: pr.head.ref
               });
               console.log(commit.sha, pr.number);
-              const createdCommit = await github.git.createCommit({
+              const {data: createdCommit} = await github.git.createCommit({
                 owner,
                 repo,
                 message: "tigger github actions",
@@ -115,5 +115,11 @@ jobs:
                 parents: [commit.sha]
               });
               console.log(createdCommit);
+              await github.git.updateRef({
+                owner,
+                repo,
+                ref: commit.sha,
+                sha: createdCommit.sha
+              })
             }
             
