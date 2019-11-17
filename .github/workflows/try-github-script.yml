@@ -102,14 +102,14 @@ jobs:
 
             for (pr of pullRequests) {
               let pullReq = {};
+              let i = 0;
               while (pullReq.mergeable === undefined && pullReq.mergeable === null) {
-                pullReq = (
-                  await github.pulls.get({
-                    owner,
-                    repo,
-                    pull_number: pr.number
-                  })
-                ).data;
+                console.log(i++);
+                {data: pullReq} = await github.pulls.get({
+                  owner,
+                  repo,
+                  pull_number: pr.number
+                });
               }
               console.log(pullReq);
               const {data: commit} = await github.pr.commits({
