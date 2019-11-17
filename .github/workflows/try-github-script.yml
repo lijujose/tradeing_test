@@ -114,7 +114,7 @@ jobs:
                 tree: commit.commit.tree.sha,
                 parents: [commit.sha]
               });
-              console.log(createdCommit);
+              console.log(createdCommit.sha, pr.head.ref);
               await github.git.updateRef({
                 owner,
                 repo,
