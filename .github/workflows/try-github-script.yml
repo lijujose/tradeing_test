@@ -99,14 +99,14 @@ jobs:
               base: "master",
               state: "open"
             });
-
+            console.log(pullRequests);
             for (pr of pullRequests) {
               const {data: commit} = await github.pr.commits({
                 owner,
                 repo,
                 branch: pr.head.ref
               });
-              console.log(commit.sha, pr.number);
+  
               const {data: createdCommit} = await github.git.createCommit({
                 owner,
                 repo,
@@ -114,7 +114,7 @@ jobs:
                 tree: commit.commit.tree.sha,
                 parents: [commit.sha]
               });
-              console.log(createdCommit.sha, `heads/${pr.head.ref}`);
+  
               await github.git.updateRef({
                 owner,
                 repo,
