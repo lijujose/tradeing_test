@@ -101,7 +101,6 @@ jobs:
             });
 
             for (pr of pullRequests) {
-              if (pr.head.ref === "temp2") break;
               const {data: commit} = await github.pr.commits({
                 owner,
                 repo,
