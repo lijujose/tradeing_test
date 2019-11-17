@@ -106,6 +106,6 @@ jobs:
                 repo,
                 branch: pr.head.ref
               });
-              console.log(commit.sha, pr.number);
+              console.log(commit, pr.number);
             }
             
