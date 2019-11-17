@@ -103,7 +103,7 @@ jobs:
             for (pr of pullRequests) {
               let pullReq = {};
               let i = 0;
-              while (pullReq.mergeable === undefined && pullReq.mergeable === null) {
+              while (pullReq.mergeable !== undefined && pullReq.mergeable !== null) {
                 console.log(i++);
                 pullReq = (
                   await github.pulls.get({
