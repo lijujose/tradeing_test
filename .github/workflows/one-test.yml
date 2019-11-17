@@ -1,0 +1,16 @@
+name: tt
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  try-github-script:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@0.2.0
+        with:
+          github-token: ${{github.token}}
+          script: |
+            console.log("helllllllllllo")
