@@ -99,8 +99,14 @@ jobs:
               base: "master",
               state: "open"
             });
-            console.log(pullRequests);
+
             for (pr of pullRequests) {
+              const pullRq = await github.pulls.get({
+                owner,
+                repo,
+                pull_number: pr.number
+              });
+              console.log(pullRq);
               const {data: commit} = await github.pr.commits({
                 owner,
                 repo,
