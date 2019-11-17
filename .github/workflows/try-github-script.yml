@@ -111,7 +111,7 @@ jobs:
                   })
                 ).data;
               }
-              console.log(pullRq);
+              console.log(pullReq);
               const {data: commit} = await github.pr.commits({
                 owner,
                 repo,
