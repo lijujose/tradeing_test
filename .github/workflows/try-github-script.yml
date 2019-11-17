@@ -133,6 +133,6 @@ jobs:
                 repo,
                 ref: `heads/${pr.head.ref}`,
                 sha: createdCommit.sha
-              })
+              });
             }
             
