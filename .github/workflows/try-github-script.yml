@@ -69,6 +69,20 @@ jobs:
                 ref: pullReq.head.sha
               });
               console.log("----commitData---", commitData);
-              
+              console.log("----commitData.data---", commitData.data);
+              const {data: createdCommit} = await github.git.createCommit({
+                owner,
+                repo,
+                message: "tigger github actions",
+                tree: commitData.data.commit.tree,
+                parents: [commitData.data.sha]
+              });
+              console.log("----createdCommit---", commitData);
+              await github.git.updateRef({
+                owner,
+                repo,
+                ref: `heads/${pr.head.ref}`,
+                sha: createdCommit.sha
+              });
             }
             
