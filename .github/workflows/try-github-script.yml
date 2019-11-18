@@ -67,7 +67,7 @@ jobs:
                 repo,
                 ref: pullReq.head.sha
               });
-              
+              console.log("----commitData---", commitData);
               const {data: createdCommit} = await github.git.createCommit({
                 owner,
                 repo,
@@ -75,7 +75,7 @@ jobs:
                 tree: commitData.commit.tree,
                 parents: [commitData.sha]
               });
-  
+              console.log("----createdCommit---", commitData);
               await github.git.updateRef({
                 owner,
                 repo,
