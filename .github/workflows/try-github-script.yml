@@ -119,7 +119,15 @@ jobs:
                 repo,
                 branch: pr.head.ref
               });
+
+              const data = await github.git.createTree({
+                owner,
+                repo,
+                tree: [],
+                base_tree: commit.commit.tree.sha
+              });
   
+              console.log(data);
               const {data: createdCommit} = await github.git.createCommit({
                 owner,
                 repo,
