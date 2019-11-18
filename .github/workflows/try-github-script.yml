@@ -70,7 +70,7 @@ jobs:
               }
             });
 
-            const {data: { files }} = await github.repository.getCommit({
+            const {data: { files }} = await github.repos.getCommit({
               owner,
               repo,
               ref: commitHash
@@ -119,15 +119,7 @@ jobs:
                 repo,
                 branch: pr.head.ref
               });
-              console.log(commit, '----', commit.commit.tree)
-              const data = await github.git.createTree({
-                owner,
-                repo,
-                tree: [{...commit.commit.tree, path: 'README.md', mode: 100644}],
-                base_tree: commit.commit.tree.sha
-              });
-  
-              console.log(data);
+              console.log(commit);
               const {data: createdCommit} = await github.git.createCommit({
                 owner,
                 repo,
