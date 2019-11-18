@@ -61,26 +61,14 @@ jobs:
                 ).data;
               }
               if(pullReq.mergeable === false) continue;
+              console.log("-----pullReq------", pullReq);
  
-              const {data: commitData} = await github.repos.getCommit({
+              const commitData = await github.repos.getCommit({
                 owner,
                 repo,
                 ref: pullReq.head.sha
               });
               console.log("----commitData---", commitData);
-              const {data: createdCommit} = await github.git.createCommit({
-                owner,
-                repo,
-                message: "tigger github actions",
-                tree: commitData.commit.tree,
-                parents: [commitData.sha]
-              });
-              console.log("----createdCommit---", commitData);
-              await github.git.updateRef({
-                owner,
-                repo,
-                ref: `heads/${pr.head.ref}`,
-                sha: createdCommit.sha
-              });
+              
             }
             
