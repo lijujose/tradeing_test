@@ -62,7 +62,7 @@ jobs:
               }
               if(pullReq.mergeable === false) continue;
 
-              const {data: commit} = await github.gitdata.getReference({
+              const {data: commit} = await github.git.getRef({
                 owner,
                 repo,
                 branch: pr.head.ref
