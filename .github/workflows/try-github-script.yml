@@ -74,9 +74,9 @@ jobs:
                 commiter: context.payload.pusher,
                 author: context.payload.pusher,
               });
-              */
+
               console.log(data);
- 
+              */
               
               console.log("in here");
               const {data: commitData} = await github.repos.getCommit({
