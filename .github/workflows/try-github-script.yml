@@ -68,6 +68,7 @@ jobs:
                 message: "trigger github action",
                 branch: pr.head.ref,
                 content: "",
+                sha: ""
                 path: "github-action-use.txt",
                 commiter: context.payload.pusher,
                 author: context.payload.pusher,
