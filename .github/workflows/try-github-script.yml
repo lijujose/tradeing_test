@@ -17,7 +17,7 @@ jobs:
             const repo = context.payload.repository.name;
             const pushedCommitHash = context.payload.after;
             let runGithubActions = false;
-            console.log(context.payload.pusher, context.payload);
+
             const {data: { files }} = await github.repos.getCommit({
               owner,
               repo,
@@ -62,6 +62,7 @@ jobs:
               }
               if(pullReq.mergeable === false) continue;
 
+              /*
               const data = await github.repos.createOrUpdateFile({
                 owner,
                 repo,
@@ -73,10 +74,10 @@ jobs:
                 commiter: context.payload.pusher,
                 author: context.payload.pusher,
               });
-
+              */
               console.log(data);
  
-              /*
+              
               console.log("in here");
               const {data: commitData} = await github.repos.getCommit({
                 owner,
@@ -89,7 +90,9 @@ jobs:
                 repo,
                 message: "tigger github actions",
                 tree: commitData.commit.tree.sha,
-                parents: [commitData.sha]
+                parents: [commitData.sha],
+                commiter: context.payload.pusher,
+                author: context.payload.pusher,
               });
 
               await github.git.updateRef({
@@ -98,6 +101,5 @@ jobs:
                 ref: `heads/${pr.head.ref}`,
                 sha: createdCommit.sha
               });
-              */
             }
             
