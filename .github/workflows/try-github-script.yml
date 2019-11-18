@@ -21,7 +21,7 @@ jobs:
             const {data: { files }} = await github.repos.getCommit({
               owner,
               repo,
-              commit_sha: pushedCommitHash
+              ref: pushedCommitHash
             });
 
             for (file of files) {
@@ -61,12 +61,26 @@ jobs:
                 ).data;
               }
               if(pullReq.mergeable === false) continue;
-               console.log("-----pullReq------",pullReq);
-              const data = await github.repos.getCommit({
+ 
+              const {data: commitData} = await github.repos.getCommit({
                 owner,
                 repo,
-                commit_sha: pullReq.head.sha
+                ref: pullReq.head.sha
               });
-              console.log("-----getCommit------",data);
+              
+              const {data: createdCommit} = await github.git.createCommit({
+                owner,
+                repo,
+                message: "tigger github actions",
+                tree: commitData.commit.tree,
+                parents: [commitData.sha]
+              });
+  
+              await github.git.updateRef({
+                owner,
+                repo,
+                ref: `heads/${pr.head.ref}`,
+                sha: createdCommit.sha
+              });
             }
             
