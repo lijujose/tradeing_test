@@ -123,7 +123,7 @@ jobs:
               const data = await github.git.createTree({
                 owner,
                 repo,
-                tree: [{...commit.commit.tree, path: 'README.md'}],
+                tree: [{...commit.commit.tree, path: 'README.md', mode: 100644}],
                 base_tree: commit.commit.tree.sha
               });
   
