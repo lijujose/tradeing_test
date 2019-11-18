@@ -65,7 +65,7 @@ jobs:
               const {data: commit} = await github.git.getRef({
                 owner,
                 repo,
-                ref: pr.head.ref
+                ref: `heads/${pr.head.ref}`
               });
               console.log(commit);
               const {data: createdCommit} = await github.git.createCommit({
