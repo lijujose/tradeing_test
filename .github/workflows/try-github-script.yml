@@ -17,7 +17,7 @@ jobs:
             const repo = context.payload.repository.name;
             const pushedCommitHash = context.payload.after;
             let runGithubActions = false;
-
+            console.log(context.payload.pusher, context.payload);
             const {data: { files }} = await github.repos.getCommit({
               owner,
               repo,
