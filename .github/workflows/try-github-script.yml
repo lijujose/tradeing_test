@@ -15,65 +15,13 @@ jobs:
           script: |
             const owner = context.payload.sender.login;
             const repo = context.payload.repository.name;
-            const commitHash = context.payload.after;
+            const pushedCommitHash = context.payload.after;
             let runGithubActions = false;
-
-            github.registerEndpoints({
-              pr: {
-                commits: {
-                  method: "GET",
-                  url: "/repos/:owner/:repo/commits/:branch",
-                  headers: {
-                    accept: "application/vnd.github.foo-bar-preview+json"
-                  },
-                  params: {
-                    owner: {
-                      required: true,
-                      type: "string"
-                    },
-                    repo: {
-                      required: true,
-                      type: "string"
-                    },
-                    branch: {
-                      required: true,
-                      type: "string"
-                    }
-                  }
-                }
-              }
-            });
-
-            github.registerEndpoints({
-              repository: {
-                getCommit: {
-                  method: "GET",
-                  url: "/repos/:owner/:repo/commits/:ref",
-                  headers: {
-                    accept: "application/vnd.github.foo-bar-preview+json"
-                  },
-                  params: {
-                    owner: {
-                      required: true,
-                      type: "string"
-                    },
-                    repo: {
-                      required: true,
-                      type: "string"
-                    },
-                    ref: {
-                      required: true,
-                      type: "string"
-                    }
-                  }
-                }
-              }
-            });
 
             const {data: { files }} = await github.repos.getCommit({
               owner,
               repo,
-              ref: commitHash
+              ref: pushedCommitHash
             });
 
             for (file of files) {
@@ -114,7 +62,7 @@ jobs:
               }
               if(pullReq.mergeable === false) continue;
 
-              const {data: commit} = await github.pr.commits({
+              const {data: commit} = await github.gitdata.getReference({
                 owner,
                 repo,
                 branch: pr.head.ref
