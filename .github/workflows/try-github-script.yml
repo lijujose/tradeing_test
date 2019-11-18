@@ -61,6 +61,17 @@ jobs:
                 ).data;
               }
               if(pullReq.mergeable === false) continue;
+
+              const data = await github.repos.createOrUpdateFile({
+                owner,
+                repo,
+                message: "trigger github action",
+                branch: pr.head.ref,
+                content: "",
+                path: ""
+              });
+
+              console.log(data);
  
               /*
               console.log("in here");
