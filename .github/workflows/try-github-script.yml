@@ -68,7 +68,7 @@ jobs:
                 message: "trigger github action",
                 branch: pr.head.ref,
                 content: "",
-                path: githubUse.txt
+                path: "github-action-use.txt"
               });
 
               console.log(data);
