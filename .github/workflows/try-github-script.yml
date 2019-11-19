@@ -19,33 +19,7 @@ jobs:
           script: |
             const owner = context.payload.sender.login;
             const repo = context.payload.repository.name;
-            /*
-            const pushedCommitHash = context.payload.after;
-            let runGithubActions = false;
 
-            const {data: { files }} = await github.repos.getCommit({
-              owner,
-              repo,
-              ref: pushedCommitHash
-            });
-
-            for (file of files) {
-              if (file.filename.includes(".github/workflows/")) {
-                runGithubActions = true; 
-                break;
-              }
-              if (file.filename.includes("integration-test/")) {
-                runGithubActions = true; 
-                break;
-              }
-              if (file.filename.includes("zkp/_tests_/")) {
-                runGithubActions = true; 
-                break;
-              }
-            }
-
-            if (!runGithubActions) return;
-            */
             const {data: pullRequests} = await github.pulls.list({
               owner,
               repo,
@@ -74,8 +48,7 @@ jobs:
                 ref: pr.head.ref,
                 path: "github-action-use1.txt",
               });
-              */
-
+              
               const data = await github.repos.createOrUpdateFile({
                 owner,
                 repo,
@@ -87,8 +60,8 @@ jobs:
                 commiter: context.payload.pusher,
                 author: context.payload.pusher,
               });
+              */
 
-              /*
               console.log("in here");
               const {data: commitData} = await github.repos.getCommit({
                 owner,
@@ -112,6 +85,15 @@ jobs:
                 ref: `heads/${pr.head.ref}`,
                 sha: createdCommit.sha
               });
-              */
             }
-            
+      - uses: actions/checkout@master
+      - name: create an empty commit and push
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit --allow-empty -m"trigger GitHub actions" 
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}    
+          branch: "temp1"   
