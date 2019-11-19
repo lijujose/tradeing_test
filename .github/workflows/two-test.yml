@@ -1,16 +1,15 @@
-name: tt2
+name: tt3
 
 on:
-  pull_request:
-    branches:
-      - master
+  check_suites:
+    types: [rerequested, requested_action]
 
 jobs:
-  try-github-script2:
+  try-github-script3:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@0.2.0
         with:
           github-token: ${{github.token}}
           script: |
-            console.log("helllllllllllo")
+            console.log("helllllllllllo-----2")
