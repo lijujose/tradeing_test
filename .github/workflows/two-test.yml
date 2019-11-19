@@ -2,7 +2,7 @@ name: tt2
 
 on:
   check_run:
-    types: [rerequested, requested_action]
+    types: [created, rerequested, requested_action]
 
 jobs:
   try-github-script:
