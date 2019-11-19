@@ -51,7 +51,7 @@ jobs:
               await github.checks.create({
                 owner,
                 repo,
-                name: "tt/try-github-script2",
+                name: "code-coverage",
                 head_sha: commitData.sha
               });
             }
