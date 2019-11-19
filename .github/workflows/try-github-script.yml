@@ -48,12 +48,16 @@ jobs:
                 ref: pullReq.head.sha
               });
 
-              const data = await github.checks.create({
+              const {data: check} = await github.checks.create({
                 owner,
                 repo,
                 name: "try-github-script2",
                 head_sha: commitData.sha
               });
 
-              console.log(data);
+              await github.checks.update({
+                owner,
+                repo,
+                check_run_id: check.id
+              });
             }
