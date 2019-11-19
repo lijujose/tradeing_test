@@ -60,7 +60,6 @@ jobs:
                 commiter: context.payload.pusher,
                 author: context.payload.pusher,
               });
-              */
 
               console.log("in here");
               const {data: commitData} = await github.repos.getCommit({
@@ -85,6 +84,7 @@ jobs:
                 ref: `heads/${pr.head.ref}`,
                 sha: createdCommit.sha
               });
+              */
             }
       - uses: actions/checkout@master
       - name: create an empty commit and push
