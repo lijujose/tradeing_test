@@ -1,7 +1,6 @@
 name: tt2
 
 on:
-  on:
   check_run:
     types: [rerequested, requested_action]
 
