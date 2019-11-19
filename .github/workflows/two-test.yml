@@ -1,7 +1,7 @@
 name: tt3
 
 on:
-  check_suites:
+  check_suite:
     types: [rerequested, requested_action]
 
 jobs:
