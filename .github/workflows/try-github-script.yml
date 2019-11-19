@@ -48,7 +48,7 @@ jobs:
                 ref: pullReq.head.sha
               });
 
-              awiat github.checks.create({
+              await github.checks.create({
                 owner,
                 repo,
                 name: "integration test",
