@@ -5,7 +5,7 @@ on:
     branches:
       - master
   check_run:
-    types: [created]
+    types: [created, rerequested, requested_action]
 
 jobs:
   try-github-script2:

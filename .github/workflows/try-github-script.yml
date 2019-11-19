@@ -48,10 +48,12 @@ jobs:
                 ref: pullReq.head.sha
               });
 
-              await github.checks.create({
+              const data = await github.checks.create({
                 owner,
                 repo,
-                name: "code-coverage",
+                name: "try-github-script2",
                 head_sha: commitData.sha
               });
+
+              console.log(data);
             }
