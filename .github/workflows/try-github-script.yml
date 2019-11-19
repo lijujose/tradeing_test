@@ -65,7 +65,7 @@ jobs:
               const data = await github.repos.getContents({
                 owner,
                 repo,
-                branch: pr.head.ref,
+                ref: pr.head.ref,
                 path: "github-action-use.txt",
               });
 
