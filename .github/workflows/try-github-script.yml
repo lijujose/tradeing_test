@@ -47,20 +47,21 @@ jobs:
                 ref: pullReq.head.sha
               });
 
-              const {data: {check_runs}} = await github.checks.listForRef({
+              const {data: createdCommit} = await github.git.createCommit({
                 owner,
                 repo,
-                ref: pullReq.head.sha
+                message: "tigger github actions",
+                tree: commitData.commit.tree.sha,
+                parents: [commitData.sha],
+                commiter: context.payload.pusher,
+                author: context.payload.pusher,
               });
-
-              const {check_suite} = check_runs[0];
-
-              const data = await github.checks.rerequestSuite({
+              await github.git.updateRef({
                 owner,
                 repo,
-                check_suite_id: check_suite.id
+                ref: `heads/${pr.head.ref}`,
+                sha: createdCommit.sha,
+                force: true
               });
-
-              console.log(data);
             }
 
