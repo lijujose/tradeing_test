@@ -93,9 +93,5 @@ jobs:
           git config --local user.name "GitHub Action"
           git fetch && git checkout temp1
           git commit --allow-empty -m"trigger GitHub actions"
-          echo $secrets.GITHUB_TOKEN
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}    
-          branch: "temp1"   
+          git push origin temp1
+          echo $(secrets.GITHUB_TOKEN)  
