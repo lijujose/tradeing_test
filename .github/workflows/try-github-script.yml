@@ -62,29 +62,26 @@ jobs:
               }
               if(pullReq.mergeable === false) continue;
 
-              const data = await github.repos.getContents({
+              const {data: content} = await github.repos.getContents({
                 owner,
                 repo,
                 ref: pr.head.ref,
                 path: "github-action-use.txt",
               });
 
-              console.log(data);
-              /*
               const data = await github.repos.createOrUpdateFile({
                 owner,
                 repo,
                 message: "trigger github action",
                 branch: pr.head.ref,
                 content: "",
-                sha: "",
+                sha: content.sha,
                 path: "github-action-use.txt",
                 commiter: context.payload.pusher,
                 author: context.payload.pusher,
               });
 
               console.log(data);
-              */
               /*
               console.log("in here");
               const {data: commitData} = await github.repos.getCommit({
