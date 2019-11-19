@@ -4,6 +4,8 @@ on:
   pull_request:
     branches:
       - master
+  check_run:
+    types: [created]
 
 jobs:
   try-github-script:

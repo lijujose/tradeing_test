@@ -51,26 +51,7 @@ jobs:
               await github.checks.create({
                 owner,
                 repo,
-                name: "integration test",
+                name: "tt",
                 head_sha: commitData.sha
               });
-
-              /*
-              const {data: createdCommit} = await github.git.createCommit({
-                owner,
-                repo,
-                message: "tigger github actions",
-                tree: commitData.commit.tree.sha,
-                parents: [commitData.sha],
-                commiter: context.payload.pusher,
-                author: context.payload.pusher,
-              });
-
-              await github.git.updateRef({
-                owner,
-                repo,
-                ref: `heads/${pr.head.ref}`,
-                sha: createdCommit.sha
-              });
-              */
             }
