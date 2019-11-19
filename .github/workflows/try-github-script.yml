@@ -51,7 +51,7 @@ jobs:
               await github.checks.create({
                 owner,
                 repo,
-                name: "tt",
+                name: "try-github-script2",
                 head_sha: commitData.sha
               });
             }
