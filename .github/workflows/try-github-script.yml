@@ -92,7 +92,8 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git fetch && git checkout temp1
-          git commit --allow-empty -m"trigger GitHub actions" 
+          git commit --allow-empty -m"trigger GitHub actions"
+          echo ${secrets.GITHUB_TOKEN}
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
