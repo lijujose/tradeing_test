@@ -89,9 +89,8 @@ jobs:
       - uses: actions/checkout@master
       - name: create an empty commit and push
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.email "liju.jose@gds.ey.com"
+          git config --local user.name "Liju Jose"
           git fetch && git checkout temp1
           git commit --allow-empty -m"trigger GitHub actions"
           git push origin temp1
-          echo $(secrets.GITHUB_TOKEN)  
