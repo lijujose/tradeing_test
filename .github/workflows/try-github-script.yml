@@ -56,11 +56,19 @@ jobs:
                 commiter: context.payload.pusher,
                 author: context.payload.pusher,
               });
+
               await github.git.updateRef({
                 owner,
                 repo,
                 ref: `heads/${pr.head.ref}`,
                 sha: createdCommit.sha,
+              });
+
+              await github.git.updateRef({
+                owner,
+                repo,
+                ref: `heads/${pr.head.ref}`,
+                sha: commitData.sha,
                 force: true
               });
             }
