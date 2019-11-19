@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/github-script@0.2.0
         with:
-          github-token: ${{github.token}}
+          github-token: ${{secrets.PAT}}
           script: |
             const owner = context.payload.sender.login;
             const repo = context.payload.repository.name;
@@ -62,14 +62,6 @@ jobs:
                 repo,
                 ref: `heads/${pr.head.ref}`,
                 sha: createdCommit.sha,
-              });
-
-              await github.git.updateRef({
-                owner,
-                repo,
-                ref: `heads/${pr.head.ref}`,
-                sha: commitData.sha,
-                force: true
               });
             }
 
