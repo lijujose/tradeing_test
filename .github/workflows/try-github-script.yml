@@ -47,11 +47,11 @@ jobs:
                 ref: pullReq.head.sha
               });
 
-              const data = await github.checks.listForRef({
+              const {data: {check_runs}} = await github.checks.listForRef({
                 owner,
                 repo,
                 ref: pullReq.head.sha
               });
 
-              console.log(data);
+              console.log(check_runs[0]);
             }
