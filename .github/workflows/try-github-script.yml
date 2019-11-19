@@ -10,7 +10,7 @@ on:
       - 'zkp/_tests_/*'
 
 jobs:
-  try-github-script:
+  try-github-script1:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@0.2.0

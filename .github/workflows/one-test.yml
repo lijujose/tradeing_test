@@ -8,7 +8,7 @@ on:
     types: [created]
 
 jobs:
-  try-github-script:
+  try-github-script2:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@0.2.0
