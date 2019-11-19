@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - master
+    paths:
+      - '.github/workflows/*'
+      - 'integration-test/*'
+      - 'zkp/_tests_/*'
 
 jobs:
   try-github-script:
@@ -15,6 +19,7 @@ jobs:
           script: |
             const owner = context.payload.sender.login;
             const repo = context.payload.repository.name;
+            /*
             const pushedCommitHash = context.payload.after;
             let runGithubActions = false;
 
@@ -40,7 +45,7 @@ jobs:
             }
 
             if (!runGithubActions) return;
-
+            */
             const {data: pullRequests} = await github.pulls.list({
               owner,
               repo,
