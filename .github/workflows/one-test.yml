@@ -13,7 +13,7 @@ jobs:
         with:
           github-token: ${{github.token}}
           script: |
-            console.log("helllllllllllo 33333333")
+            console.log("helllllllllllo 33333333 444")
   eslint-test:
     name: Run eslint check
     runs-on: ubuntu-18.04
