@@ -13,4 +13,4 @@ jobs:
         with:
           github-token: ${{github.token}}
           script: |
-            console.log("helllllllllllo")
+            console.log("helllllllllllo 33333333")
