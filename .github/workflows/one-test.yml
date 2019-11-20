@@ -13,8 +13,8 @@ jobs:
         with:
           github-token: ${{github.token}}
           script: |
-            console.log("helllllllllllo ")
-  eslint-test:
+            console.log("helllllllllllo")
+  test1:
     name: Run eslint check
     runs-on: ubuntu-18.04
     steps:
@@ -23,3 +23,12 @@ jobs:
         with:
           node-version: '10.15.3'
       - run: ./temp
+  test2:
+    name: Run eslint check
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.15.3'
+      - run: ./temp2
