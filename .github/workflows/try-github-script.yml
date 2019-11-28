@@ -25,12 +25,15 @@ jobs:
             const owner = context.payload.sender.login;
             const repo = context.payload.repository.name;
 
-            const {data: pullRequests} = await github.pulls.list({
+            const data = await github.pulls.list({
               owner,
               repo,
               base: "master",
               state: "open"
             });
+
+            console.log(data);
+            const pullRequests = data.data;
 
             for (pr of pullRequests) {
 
