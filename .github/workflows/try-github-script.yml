@@ -61,9 +61,7 @@ jobs:
                 repo,
                 message: "tigger github actions",
                 tree: commitData.commit.tree.sha,
-                parents: [commitData.sha],
-                commiter: context.payload.pusher,
-                author: context.payload.pusher,
+                parents: [commitData.sha]
               });
 
               await github.git.updateRef({
