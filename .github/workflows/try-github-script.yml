@@ -8,11 +8,16 @@ on:
       - '.github/workflows/*'
       - 'integration-test/*'
       - 'zkp/_tests_/*'
+      - temp
 
 jobs:
   try-github-script1:
     runs-on: ubuntu-latest
     steps:
+      - name: Hello world
+        run: echo Hello world $GITHUB_TOKEN
+        env:
+          GITHUB_TOKEN: ${{secrets.PAT}}
       - name: (GET-&-PUT Github API) Push empty commit to PR branch
         uses: actions/github-script@0.2.0
         with:
@@ -21,12 +26,15 @@ jobs:
             const owner = context.payload.sender.login;
             const repo = context.payload.repository.name;
 
-            const {data: pullRequests} = await github.pulls.list({
+            const data = await github.pulls.list({
               owner,
               repo,
               base: "master",
               state: "open"
             });
+
+            console.log(data);
+            const pullRequests = data.data;
 
             for (pr of pullRequests) {
 
