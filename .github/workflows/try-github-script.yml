@@ -33,7 +33,7 @@ jobs:
               state: "open"
             });
 
-            console.log(data);
+            console.log(data, owner);
             const pullRequests = data.data;
 
             for (pr of pullRequests) {
