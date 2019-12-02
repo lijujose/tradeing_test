@@ -8,6 +8,7 @@ on:
       - '.github/workflows/*'
       - 'integration-test/*'
       - 'zkp/_tests_/*'
+      - temp
 
 jobs:
   try-github-script1:
