@@ -23,7 +23,7 @@ jobs:
         with:
           github-token: ${{secrets.PAT}}
           script: |
-            const owner = "meabed" || context.payload.sender.login;
+            const owner = "LijuJoseJJ" || context.payload.sender.login;
             const repo = context.payload.repository.name;
 
             const data = await github.pulls.list({
