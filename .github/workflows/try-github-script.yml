@@ -16,7 +16,7 @@ jobs:
       - name: (GET-&-PUT Github API) Push empty commit to PR branch
         uses: actions/github-script@0.2.0
         with:
-          github-token: ${{secrets.PAT}}
+          github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             const owner = context.payload.sender.login;
             const repo = context.payload.repository.name;
