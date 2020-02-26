@@ -12,13 +12,16 @@ jobs:
       - name: Hello world
         run: echo Hello world $GITHUB_TOKEN
         env:
-          GITHUB_TOKEN: ${{secrets.PAT}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: (GET-&-PUT Github API) Push empty commit to PR branch
         uses: actions/github-script@0.2.0
         with:
+          github-token: ${{secrets.PAT}}
           script: |
             const owner = context.payload.sender.login;
             const repo = context.payload.repository.name;
+
+            console.log(owner, repo);
 
             const data = await github.pulls.list({
               owner,
@@ -27,7 +30,6 @@ jobs:
               state: "open"
             });
 
-            console.log(data, owner);
             const pullRequests = data.data;
 
             for (pr of pullRequests) {
