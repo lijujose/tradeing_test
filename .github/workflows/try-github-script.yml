@@ -17,8 +17,6 @@ jobs:
             const owner = context.payload.sender.login;
             const repo = context.payload.repository.name;
 
-            console.log(owner, repo);
-
             const data = await github.pulls.list({
               owner,
               repo,
@@ -65,6 +63,6 @@ jobs:
                   sha: createdCommit.sha,
                 });
               } catch(err) {
-                console.log(err);
+                console.log(err, pr);
               }
             }
