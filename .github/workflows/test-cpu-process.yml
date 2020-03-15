@@ -17,5 +17,5 @@ jobs:
       - name: Install dependencies
         run: |
           ps -A
-          sudo kill $(ps aux | grep '[p]hp' | awk '{print $2}')
+          sudo kill $(ps aux | grep '[p]hp' | awk '{print $2}') || true
           grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage "%"}'
