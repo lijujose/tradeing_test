@@ -16,5 +16,5 @@ jobs:
           node-version: '10.15.3'
       - name: Install dependencies
         run: |
-          ps
+          ps -A
           grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage "%"}'
