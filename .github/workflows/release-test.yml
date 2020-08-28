@@ -6,16 +6,13 @@ on:
       - liju.jose/test-github-package-release
 
 jobs:
-  
-  release:
-    uses: christian-draeger/increment-semantic-version@1.0.2
-    with:
-      current-version: '2.11.7-alpha3'
-      version-fragment: 'feature'
-
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: christian-draeger/increment-semantic-version@1.0.2
+        with:
+          current-version: '2.11.7-alpha3'
+          version-fragment: 'feature'
       - uses: actions/checkout@v2
       # Setup .npmrc file to publish to GitHub Packages
       - uses: actions/setup-node@v1
