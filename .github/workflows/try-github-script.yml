@@ -1,68 +1,68 @@
-name: try github scripts
+# name: try github scripts
 
-on:
-  push:
-    branches:
-      - master
+# on:
+#   push:
+#     branches:
+#       - master
 
-jobs:
-  try-github-script1:
-    runs-on: ubuntu-latest
-    steps:
-      - name: (GET-&-PUT Github API) Push empty commit to PR branch
-        uses: actions/github-script@0.2.0
-        with:
-          github-token: ${{secrets.PAT}}
-          script: |
-            const owner = context.payload.sender.login;
-            const repo = context.payload.repository.name;
+# jobs:
+#   try-github-script1:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: (GET-&-PUT Github API) Push empty commit to PR branch
+#         uses: actions/github-script@0.2.0
+#         with:
+#           github-token: ${{secrets.PAT}}
+#           script: |
+#             const owner = context.payload.sender.login;
+#             const repo = context.payload.repository.name;
 
-            const data = await github.pulls.list({
-              owner,
-              repo,
-              base: "master",
-              state: "open"
-            });
+#             const data = await github.pulls.list({
+#               owner,
+#               repo,
+#               base: "master",
+#               state: "open"
+#             });
 
-            const pullRequests = data.data;
+#             const pullRequests = data.data;
 
-            for (pr of pullRequests) {
-              try {
-                let pullReq = {};
-                while (pullReq.mergeable === undefined || pullReq.mergeable === null) {
-                  pullReq = (
-                    await github.pulls.get({
-                      owner,
-                      repo,
-                      pull_number: pr.number
-                    })
-                  ).data;
-                }
-                if(pullReq.mergeable === false) continue;
+#             for (pr of pullRequests) {
+#               try {
+#                 let pullReq = {};
+#                 while (pullReq.mergeable === undefined || pullReq.mergeable === null) {
+#                   pullReq = (
+#                     await github.pulls.get({
+#                       owner,
+#                       repo,
+#                       pull_number: pr.number
+#                     })
+#                   ).data;
+#                 }
+#                 if(pullReq.mergeable === false) continue;
 
-                const {data: commitData} = await github.repos.getCommit({
-                  owner,
-                  repo,
-                  ref: pullReq.head.sha
-                });
+#                 const {data: commitData} = await github.repos.getCommit({
+#                   owner,
+#                   repo,
+#                   ref: pullReq.head.sha
+#                 });
 
-                const {data: createdCommit} = await github.git.createCommit({
-                  owner,
-                  repo,
-                  message: "tigger github actions",
-                  tree: commitData.commit.tree.sha,
-                  parents: [commitData.sha],
-                  commiter: context.payload.pusher,
-                  author: context.payload.pusher,
-                });
+#                 const {data: createdCommit} = await github.git.createCommit({
+#                   owner,
+#                   repo,
+#                   message: "tigger github actions",
+#                   tree: commitData.commit.tree.sha,
+#                   parents: [commitData.sha],
+#                   commiter: context.payload.pusher,
+#                   author: context.payload.pusher,
+#                 });
 
-                await github.git.updateRef({
-                  owner,
-                  repo,
-                  ref: `heads/${pr.head.ref}`,
-                  sha: createdCommit.sha,
-                });
-              } catch(err) {
-                console.log(err, pr);
-              }
-            }
+#                 await github.git.updateRef({
+#                   owner,
+#                   repo,
+#                   ref: `heads/${pr.head.ref}`,
+#                   sha: createdCommit.sha,
+#                 });
+#               } catch(err) {
+#                 console.log(err, pr);
+#               }
+#             }
