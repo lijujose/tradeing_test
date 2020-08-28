@@ -6,12 +6,13 @@ on:
       - liju.jose/test-github-package-release
 
 jobs:
-  - name: Bump release version
-    id: bump_version
+  
+  release:
     uses: christian-draeger/increment-semantic-version@1.0.2
     with:
       current-version: '2.11.7-alpha3'
       version-fragment: 'feature'
+
   build:
     runs-on: ubuntu-latest
     steps:
