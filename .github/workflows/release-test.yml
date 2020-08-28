@@ -28,7 +28,6 @@ jobs:
         with:
           node-version: '12.x'
           # Defaults to the user or organization that owns the workflow file
-      - run: npm install
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.PAT2 }}
