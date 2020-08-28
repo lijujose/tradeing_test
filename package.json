@@ -1,6 +1,6 @@
 {
   "name": "tradeing_test",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -23,8 +23,5 @@
   },
   "dependencies": {
     "typescript": "^3.6.4"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   }
 }
