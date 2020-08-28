@@ -24,7 +24,7 @@ jobs:
         env:
           OUTPUTS: ${{ toJson(steps.semantic.outputs) }}
 
-       - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v1
         with:
           node-version: '12.x'
           registry-url: 'https://npm.pkg.github.com'
