@@ -1,8 +1,10 @@
- name: Node.js Package
+name: Node.js Package
+
 on:
   push:
     branches:
       - liju.jose/test-github-package-release
+
 jobs:
   build:
     runs-on: ubuntu-latest
