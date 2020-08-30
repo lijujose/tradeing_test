@@ -24,10 +24,10 @@ jobs:
         env:
           OUTPUTS: ${{ toJson(steps.semantic.outputs) }}
 
-     - name: docker push version
-      if: steps.semantic.outputs.new-release-published == 'true'
-      run: |
-        docker build -t docker.pkg.github.com/lijujose/tradeing_test/tradeing_test:$TAG .
-        docker push docker.pkg.github.com/lijujose/tradeing_test/tradeing_test:$TAG
-      env:
-        TAG: v$RELEASE_VERSION
+      - name: docker push version
+        if: steps.semantic.outputs.new-release-published == 'true'
+        run: |
+          docker build -t docker.pkg.github.com/lijujose/tradeing_test/tradeing_test:$TAG .
+          docker push docker.pkg.github.com/lijujose/tradeing_test/tradeing_test:$TAG
+        env:
+          TAG: v$RELEASE_VERSION
