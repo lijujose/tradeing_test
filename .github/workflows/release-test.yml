@@ -27,9 +27,13 @@ jobs:
       - name: docker push version
         if: steps.semantic.outputs.new-release-published == 'true'
         run: |
+          echo ${GITHUB_ACTOR}
+          echo ${GITHUB_TOKEN}
+          echo ${GITHUB_TOKEN1}
           docker login https://docker.pkg.github.com -u lijujose -p $GITHUB_TOKEN
           docker build -t docker.pkg.github.com/lijujose/tradeing_test/tradeing_test:$TAG .
           docker push docker.pkg.github.com/lijujose/tradeing_test/tradeing_test:$TAG
         env:
           TAG: v${{ steps.semantic.outputs.release-version }}
           GITHUB_TOKEN: ${{ secrets.PAT2 }}
+          GITHUB_TOKEN1: ${{ secrets.GITHUB_TOKEN }}
