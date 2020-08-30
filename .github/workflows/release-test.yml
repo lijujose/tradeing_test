@@ -24,11 +24,10 @@ jobs:
         env:
           OUTPUTS: ${{ toJson(steps.semantic.outputs) }}
 
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-          registry-url: 'https://npm.pkg.github.com'
-          # Defaults to the user or organization that owns the workflow file
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.PAT2 }}
+     - name: docker push version
+      if: steps.semantic.outputs.new-release-published == 'true'
+      run: |
+        docker build -t docker.pkg.github.com/lijujose/tradeing_test/tradeing_test:$TAG .
+        docker push docker.pkg.github.com/lijujose/tradeing_test/tradeing_test:$TAG
+      env:
+        TAG: v$RELEASE_VERSION
