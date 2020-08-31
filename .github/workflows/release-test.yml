@@ -45,5 +45,5 @@ jobs:
           docker push docker.pkg.github.com/lijujose/tradeing_test/tradeing_test:$TAG
         env:
           TAG: v${{ steps.semantic.outputs.release-version }}
-          CHECKOK: v$RELEASE_VERSION
+          CHECKOK: v${{ RELEASE_VERSION }}
           GITHUB_TOKEN: ${{ secrets.PAT2 }}
