@@ -38,11 +38,8 @@ jobs:
       - name: docker push version
         if: steps.semantic.outputs.new-release-published == 'true'
         run: |
-          echo $TAG
-          echo $RELEASE_VERSION
           docker login https://docker.pkg.github.com -u $GITHUB_ACTOR -p $GITHUB_TOKEN
-          docker build -t docker.pkg.github.com/lijujose/tradeing_test/tradeing_test:$TAG .
-          docker push docker.pkg.github.com/lijujose/tradeing_test/tradeing_test:$TAG
+          docker build -t docker.pkg.github.com/lijujose/tradeing_test/tradeing_test:$RELEASE_VERSION .
+          docker push docker.pkg.github.com/lijujose/tradeing_test/tradeing_test:$RELEASE_VERSION
         env:
-          TAG: v${{ steps.semantic.outputs.release-version }}
           GITHUB_TOKEN: ${{ secrets.PAT2 }}
