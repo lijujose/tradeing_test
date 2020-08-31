@@ -22,7 +22,7 @@ jobs:
       - uses: codfish/semantic-release-action@master
         id: semantic
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT2 }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - run: echo $RELEASE_VERSION
@@ -36,7 +36,7 @@ jobs:
           # Defaults to the user or organization that owns the workflow file
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.PAT2 }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: docker push version
         if: steps.semantic.outputs.new-release-published == 'true'
@@ -45,4 +45,4 @@ jobs:
           docker build -t docker.pkg.github.com/lijujose/tradeing_test/tradeing_test:$RELEASE_VERSION .
           docker push docker.pkg.github.com/lijujose/tradeing_test/tradeing_test:$RELEASE_VERSION
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT2 }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
