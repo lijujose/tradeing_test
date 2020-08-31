@@ -16,7 +16,7 @@ jobs:
           node-version: '12.x'
           registry-url: 'https://npm.pkg.github.com'
 
-      - run: npm i
+      - run: npm install
 
       # you'll need to add an `id` in order to access output variables
       - uses: codfish/semantic-release-action@master
