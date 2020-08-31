@@ -18,6 +18,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT2 }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - run: echo $RELEASE_VERSION
+      - run: echo $RELEASE_VERSION
       - run: echo ${{ steps.semantic.outputs.release-version }}
 
       - run: echo "$OUTPUTS"
