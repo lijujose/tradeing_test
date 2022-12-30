@@ -20,7 +20,7 @@
   "homepage": "https://github.com/lijujose/tradeing_test#readme",
   "devDependencies": {
     "@semantic-release/git": "^9.0.0",
-    "mocha": "^6.2.2"
+    "mocha": "^10.2.0"
   },
   "dependencies": {
     "typescript": "^3.6.4"
